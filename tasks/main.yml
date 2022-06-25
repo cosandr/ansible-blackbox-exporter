@@ -1,17 +1,21 @@
 ---
-- include: preflight.yml
+- include_tasks: preflight.yml
   tags:
     - blackbox_exporter_install
     - blackbox_exporter_configure
     - blackbox_exporter_run
 
-- include: install.yml
-  become: true
+- include_tasks:
+    file: install.yml
+    apply:
+      become: true
   tags:
     - blackbox_exporter_install
 
-- include: configure.yml
-  become: true
+- include_tasks:
+    file: configure.yml
+    apply:
+      become: true
   tags:
     - blackbox_exporter_configure
 
