@@ -82,7 +82,7 @@
   until: _download_packages is succeeded
   retries: 5
   delay: 2
-  when: ansible_os_family | lower == "debian"
+  when: ansible_facts.os_family | lower == "debian"
 
 - name: Ensure blackbox exporter binary has cap_net_raw capability
   capabilities:
